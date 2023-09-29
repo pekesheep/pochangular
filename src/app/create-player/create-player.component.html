@@ -1,7 +1,8 @@
 <div>
   <p>Jugador</p>
-  <input type="text" placeholder="Escribe el nombre" />
+  <input type="text" placeholder="Escribe el nombre"/>
   <p>Color</p>
-  <input type="color" id="colorPicker" (input)="myColor()" value="#6a5acd" />
-  <span> Hex Code: </span><input disabled type="text" id="box" />
+  <input type="color" id="colorPicker" required [(ngModel)]="color"/>
+  <span> Hex Code: </span><input type="text" id="box" [value]="color"/>
+  
 </div>
