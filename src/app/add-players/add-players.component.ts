@@ -1,44 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PlayerProfile } from '../models/player-profile';
+import { FormsModule } from '@angular/forms';
+
+type PlayerItem = { player: PlayerProfile; selected: boolean };
 
 @Component({
   selector: 'app-add-players',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-players.component.html',
   styleUrls: ['./add-players.component.scss'],
 })
-export class AddPlayersComponent {
-  /**
-   * List of players in the current game.
-   */
-  public playerList: string[] = [
-    'jugador 1',
-    'jugador 2',
-    'jugador 3',
-    'jugador 4',
+export class AddPlayersComponent implements OnInit {
+  playerItems: PlayerItem[] = [];
+
+  players: PlayerProfile[] = [
+    { name: 'beke', color: '#000000' },
+    { name: 'angel', color: '#121212' },
+    { name: 'beke', color: '#000000' },
+    { name: 'angel', color: '#121212' },
+    { name: 'beke', color: '#000000' },
+    { name: 'angel', color: '#121212' },
+    { name: 'beke', color: '#000000' },
+    { name: 'angel', color: '#121212' },
+    { name: 'beke', color: '#000000' },
+    { name: 'angel', color: '#121212' },
   ];
 
-  /**
-   * List of all the players.
-   */
-  public totalPlayerRegister: string[] = [
-    'jugador 5',
-    'jugador 6',
-    'jugador 7',
-    'jugador 8',
-  ];
-
-  public addPlayer(player: string): void {
-    this.playerList.push(player);
-    this.totalPlayerRegister.splice(
-      this.totalPlayerRegister.indexOf(player),
-      1,
-    );
-  }
-
-  public removePlayer(player: string): void {
-    this.totalPlayerRegister.push(player);
-    this.playerList.splice(this.playerList.indexOf(player), 1);
+  ngOnInit(): void {
+    this.playerItems = this.players
+      .map((p) => {
+        return { player: p, selected: false };
+      })
+      .sort((a, b) => a.player.name.localeCompare(b.player.name));
   }
 }

@@ -2,19 +2,12 @@
   <h1>Añade jugadores</h1>
   <h3>Jugadores</h3>
   <hr />
-  <ul>
-    <li *ngFor="let player of playerList" (click)="removePlayer(player)">
-      {{ player }}
-    </li>
-  </ul>
-  <h3>Jugadores recientes</h3>
-  <hr />
-  <ul>
-    <li
-      *ngFor="let totalPlayers of totalPlayerRegister"
-      (click)="addPlayer(totalPlayers)"
-    >
-      {{ totalPlayers }}
-    </li>
-  </ul>
 </div>
+<ul class="player-list">
+  <li class="player" *ngFor="let item of playerItems">
+    <span>{{ item.player.name }}</span>
+    <input type="checkbox" [(ngModel)]="item.selected" />
+  </li>
+</ul>
+
+<button>Empezar</button>
