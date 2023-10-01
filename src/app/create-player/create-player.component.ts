@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -7,8 +7,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './create-player.component.html',
-  styleUrls: ['./create-player.component.scss']
+  styleUrls: ['./create-player.component.scss'],
 })
 export class CreatePlayerComponent {
-  color = "#000000";
+  color = '#000000';
 }
