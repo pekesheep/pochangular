@@ -1,0 +1,37 @@
+h1 {
+  padding: 0 10px;
+}
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.player-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.player-info {
+  font-size: 1rem;
+  margin-left: auto;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}

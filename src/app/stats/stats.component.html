@@ -1,0 +1,20 @@
+<h1>Clasificación</h1>
+
+<div class="button-container">
+  <button (click)="sortByGames()">Games</button>
+  <button (click)="sortByWinRate()">WinRate</button>
+  <button (click)="sortByHighScore()">Highscore</button>
+</div>
+
+<div class="player-list">
+  <div class="player-item">
+    <div class="circle" style="background-color: transparent"></div>
+    <p class="player-name">Player</p>
+    <p class="player-info">{{ buttonInfo }}</p>
+  </div>
+  <div *ngFor="let player of playerRanking" class="player-item">
+    <div class="circle" [style.background-color]="player.color"></div>
+    <p class="player-name">{{ player.name }}</p>
+    <p class="player-info">{{ getPlayerSortingValue(player) }}</p>
+  </div>
+</div>
