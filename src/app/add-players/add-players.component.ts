@@ -19,13 +19,13 @@ export class AddPlayersComponent implements OnInit {
   constructor(private storage: StorageService) {}
 
   ngOnInit(): void {
-    this.storage.getPlayerProfiles().then((pps) => this.initPlayers(pps ?? []));
+    this.storage.getPlayerProfiles().subscribe((profiles) => this.initPlayers(profiles ?? []));
   }
 
   private initPlayers(players: PlayerProfile[]) {
     this.playerItems = players
-      .map((p) => {
-        return { player: p, selected: false };
+      .map((profile) => {
+        return { player: profile, selected: false };
       })
       .sort((a, b) => a.player.name.localeCompare(b.player.name));
   }
