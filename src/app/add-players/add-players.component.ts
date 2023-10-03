@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayerProfile } from '../models/player-profile';
 import { FormsModule } from '@angular/forms';
+import { StorageService } from '../services/storage.service';
 
 type PlayerItem = { player: PlayerProfile; selected: boolean };
 
@@ -15,23 +16,16 @@ type PlayerItem = { player: PlayerProfile; selected: boolean };
 export class AddPlayersComponent implements OnInit {
   playerItems: PlayerItem[] = [];
 
-  players: PlayerProfile[] = [
-    { name: 'beke', color: '#000000' },
-    { name: 'angel', color: '#121212' },
-    { name: 'beke', color: '#000000' },
-    { name: 'angel', color: '#121212' },
-    { name: 'beke', color: '#000000' },
-    { name: 'angel', color: '#121212' },
-    { name: 'beke', color: '#000000' },
-    { name: 'angel', color: '#121212' },
-    { name: 'beke', color: '#000000' },
-    { name: 'angel', color: '#121212' },
-  ];
+  constructor(private storage: StorageService) {}
 
   ngOnInit(): void {
-    this.playerItems = this.players
-      .map((p) => {
-        return { player: p, selected: false };
+    this.storage.getPlayerProfiles().subscribe((profiles) => this.initPlayers(profiles ?? []));
+  }
+
+  private initPlayers(players: PlayerProfile[]) {
+    this.playerItems = players
+      .map((profile) => {
+        return { player: profile, selected: false };
       })
       .sort((a, b) => a.player.name.localeCompare(b.player.name));
   }
