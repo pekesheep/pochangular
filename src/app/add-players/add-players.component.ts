@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 import { PlayerProfile } from '../models/player-profile';
 import { FormsModule } from '@angular/forms';
 import { StorageService } from '../services/storage.service';
+import { GenericButtonComponent } from '../generic-button/generic-button.component';
 
 type PlayerItem = { player: PlayerProfile; selected: boolean };
 
 @Component({
   selector: 'app-add-players',
   standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './add-players.component.html',
   styleUrls: ['./add-players.component.scss'],
+  imports: [CommonModule, FormsModule, GenericButtonComponent],
 })
 export class AddPlayersComponent implements OnInit {
   playerItems: PlayerItem[] = [];

@@ -1,5 +1,5 @@
 <div class="menu">
-  <button routerLink="setup">Empezar partida</button>
-  <button *ngIf="gameExists">Continuar</button>
-  <button>Puntuaciones</button>
+  <app-generic-button [buttonText]="'Empezar partida'" routerLink="setup"></app-generic-button>
+  <app-generic-button [buttonText]="'Continuar'" *ngIf="gameExists"></app-generic-button>
+  <app-generic-button [buttonText]="'Puntuaciones'"></app-generic-button>
 </div>
